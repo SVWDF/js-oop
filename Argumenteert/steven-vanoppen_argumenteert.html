@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Argumenteert</title>
+</head>
+
+<body>
+    <script>
+        "use strict";
+        function som() {
+            let totaal = 0;
+            for (let i = 0; i < arguments.length; i++) {
+                if (typeof arguments[i] == "string") {
+                    arguments[i] = "";
+                }
+                else {
+                    totaal += arguments[i];
+                }
+            }
+            return totaal;
+        }
+
+        console.log(som("jan", 2, 5, 7, 8, 15, "sep"));
+    </script>
+
+</body>
+
+</html>
