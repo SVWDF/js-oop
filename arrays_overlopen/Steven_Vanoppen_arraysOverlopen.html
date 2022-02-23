@@ -58,12 +58,7 @@
         console.log(punten);
 
         //Maak vakkenEnPunten array met reduce() en log
-        function vakken(alleVakken, vak) {
-            return alleVakken;
-        }
-
-        let vakkenEnPunten = alleVakken.reduce(vakken);
+        let vakkenEnPunten = [alleVakken, punten].reduce((totaal, punt) => totaal.map((huidigewaarde, index) => huidigewaarde + ' ' + punt[index]));
         console.log(vakkenEnPunten);
-    </script>
-</body>
+    </script></body>
 </html>
