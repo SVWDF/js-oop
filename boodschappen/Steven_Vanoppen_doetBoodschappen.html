@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boodschappen</title>
+</head>
+<body>
+    <script type="text/javascript">
+        "use strict";
+        //Lege array boodschappen aanmaken
+        let boodschappen = [];
+
+        //Via JavaScript de volgende arrays toevoegen
+        boodschappen.push(
+            [
+                "bruin boerenbrood", 2, "besteld"
+            ],
+            [
+                "bio halfvolle melk", 1, "besteld"
+            ],
+            [
+                "plat water", 6, "besteld"
+            ]
+        );
+
+        //Aanpassen van de besteld tekst naar de onderstaande
+        boodschappen[0][2] = "geleverd";
+        boodschappen[1][2] = "nabesteld";
+        boodschappen[2][2] = "geleverd";
+        
+        //Array inhoud aanmaken met waardes
+        let inhoud = ["400g", "1l", "1.5l"];
+
+        //Boodschappen array overlopen met forEach en de items toevoegen via splice. Ook loggen in console
+        boodschappen.forEach(function (element , i) {
+            boodschappen[i].splice(2, 0, inhoud[i]);
+            console.log(`${boodschappen[i][0]} - aantal: ${boodschappen[i][1]} - inhoud: ${boodschappen[i][2]} - status: ${boodschappen[i][3]}`);
+        });
+    </script>
+</body>
+</html>
