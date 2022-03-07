@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>Image gallery</title>
+	<link rel="stylesheet" type="text/css" href="gallery.css">
+</head>
+
+<body>
+	<p><img id="largeImg" src="550x400/ipad.jpg" alt="Large image"></p>
+	<div id="thumbs">
+		<a href="550x400/ipad.jpg" title="ipad"><img src="200x150/ipad.jpg"></a>
+	</div>
+	<div>
+		<a id="toevoegen" href="#">Voeg afbeelding toe</a>
+	</div>
+	<script type="text/javascript">
+		"use strict";
+		window.addEventListener("DOMContentLoaded", function () {
+			let largeImg = document.getElementById("largeImg");
+			let bestandsnamen = ["ipad.jpg", "dj.jpg", "ubuntu.jpg", "electronica.jpg"];
+			let teller = 1;
+
+			function toevoegenFoto() {
+				let newA = document.createElement('a');
+				newA.setAttribute('href', `550x400/${bestandsnamen[teller]}`);
+				let naamImage = bestandsnamen[teller].substring(0, bestandsnamen[teller].indexOf("."));
+				newA.setAttribute('title', naamImage);
+
+				let newImg = document.createElement('img');
+				newImg.setAttribute('src', `200x150/${bestandsnamen[teller]}`);
+				newImg.setAttribute('alt', naamImage);
+
+				document.getElementById('thumbs').appendChild(newA);
+				newA.appendChild(newImg);
+			}
+
+			document.getElementById('toevoegen').addEventListener('click', function() {
+				toevoegenFoto();
+				teller = teller + 1;
+			});
+		});
+	</script>
+</body>
+
+</html>
