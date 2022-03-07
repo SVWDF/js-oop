@@ -39,6 +39,15 @@
 				toevoegenFoto();
 				teller = teller + 1;
 			});
+
+			document.getElementById('thumbs').addEventListener('click', function (e) {
+				e.preventDefault();
+				if (event.target.tagName == 'IMG') {
+					let image = event.target;
+					let imageName = image.getAttribute('src').replace(/^.*[\\\/]/, '');
+					largeImg.setAttribute('src', `550x400/${imageName}`);
+				}
+			});
 		});
 	</script>
 </body>
