@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		html, body {
+			height: 100%;
+		}
+
+		#hex {
+			color: white; 
+			font: 64px/64px Verdana; 
+			height: 64px;
+			/*Vertical center*/
+			position: relative; 
+			top: 50%; 
+			margin-top: -32px;
+			/*Horizontal center*/
+			text-align: center;
+		}
+	</style>
+</head> 
+<body>
+	<div id="hex"></div>
+	<label>Dag: <input id="dag" size="2"></label>
+	<label>Maand: <input id="maand" size="2"></label>
+	<label>Jaartal: <input id="jaartal" size="2"></label>
+	<input type="button" id="myBtn" value="Toon de kleur van je geboorte">
+
+	<script type="text/javascript">
+		"use strict";
+		let geboortekleur = {
+			dag: '',
+			maand: '',
+			jaartal: '',
+			toonkleur() {
+				let hex = document.getElementById('hex');
+				hex.innerHTML = `#${geboortekleur.dag}${geboortekleur.maand}${geboortekleur.jaartal}`;
+				document.body.style.backgroundColor = `#${geboortekleur.dag}${geboortekleur.maand}${geboortekleur.jaartal}`;
+			}
+		};
+
+
+		function displayGeboortekleur() {
+			geboortekleur.dag = document.getElementById('dag').value;
+			geboortekleur.maand = document.getElementById('maand').value;
+			geboortekleur.jaartal = document.getElementById('jaartal').value;
+
+			if (geboortekleur.dag.length < 2) {
+				geboortekleur.dag = ('0' + geboortekleur.dag).slice(-2)
+			}
+
+			if (geboortekleur.maand.length < 2) {
+				geboortekleur.maand = ('0' + geboortekleur.maand).slice(-2);
+			}
+
+			if (geboortekleur.jaartal.length < 2) {
+				geboortekleur.jaartal = ('0' + geboortekleur.jaartal).slice(-2);
+			}
+
+			geboortekleur.toonkleur();
+		};
+
+		document.getElementById('myBtn').addEventListener('click', function() {
+			displayGeboortekleur();
+		});
+
+	</script>
+</body>
+</html>
