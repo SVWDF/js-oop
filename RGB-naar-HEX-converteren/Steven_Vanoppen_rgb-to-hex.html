@@ -17,7 +17,7 @@
         "use strict";
 
         function lengteHex(hex) {
-            return hex = ('0' + hex).slice(-2);
+            return ('0' + hex).slice(-2);
         }
 
         let kleurHex = {
@@ -26,15 +26,24 @@
             hexBlue: '',
             HexString(mijnHex) {
                 kleurHex.hexRed = parseInt(mijnHex.red).toString(16).toUpperCase();
-                lengteHex(kleurHex.hexRed);
-
+                if (kleurHex.hexRed.length == 1) {
+                    kleurHex.hexRed = lengteHex(kleurHex.hexRed);
+                }
+                
                 kleurHex.hexGreen = parseInt(mijnHex.green).toString(16).toUpperCase();
+                if (kleurHex.hexGreen.length == 1) {
+                    kleurHex.hexGreen = lengteHex(kleurHex.hexGreen);
+                }
 
 
                 kleurHex.hexBlue = parseInt(mijnHex.blue).toString(16).toUpperCase();
+                if (kleurHex.hexBlue.length == 1) {
+                    kleurHex.hexBlue = lengteHex(kleurHex.hexBlue);
+                }
 
                 let hexWaarde = document.getElementById('hexWaardeOut');
                 hexWaarde.value = `#${kleurHex.hexRed}${kleurHex.hexGreen}${kleurHex.hexBlue}`;
+                document.body.style.backgroundColor = `#${kleurHex.hexRed}${kleurHex.hexGreen}${kleurHex.hexBlue}`;
             }
         };
 
