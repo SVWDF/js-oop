@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cylinder</title>
+</head>
+<body>
+    <div>
+        <form>
+            <label for="diameter">Diameter: </label>
+            <input type="text" name="diameter" id="diameter">
+            <label for="hoogte">Hoogte: </label>
+            <input type="text" name="hoogte" id="hoogte">
+            <input type="button" id="berekenBtn" value="Bereken">
+            <input type="text" name="bereken" id="bereken">
+        </form>
+    </div>
+    <script type="text/javascript">
+        "use strict";
+
+        function BerekenCylinder(diameter, hoogte) {
+            this.diameter = diameter;
+            this.hoogte = hoogte;
+        }
+
+        BerekenCylinder.prototype.volume = function () {
+            return Math.PI * (this.diameter / 2) * (this.diameter / 2) * this.hoogte;
+        }
+
+        document.getElementById('berekenBtn').addEventListener('click', function () {
+            let diameter = document.getElementById('diameter').value;
+            let hoogte = document.getElementById('hoogte').value;
+            let mijnCylinder = new BerekenCylinder(diameter, hoogte);
+            let volume = mijnCylinder.volume();
+            document.getElementById('bereken').value = volume.toFixed(4);
+        });
+    </script>
+</body>
+</html>
