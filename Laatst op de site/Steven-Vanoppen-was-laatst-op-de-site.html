@@ -11,7 +11,22 @@
     <script type="text/javascript">
         "use strict";
         window.addEventListener('DOMContentLoaded', function () {
-            
+            let weergave = document.getElementById('weergave');
+
+            if (!localStorage.laatstOpDeSite) {
+                weergave.innerText = 'Dit is de eerste keer dat je op deze site komt';
+                localStorage.laatstOpDeSite = new Date();
+            }
+
+            else if (localStorage.laatstOpDeSite) {
+                weergave.innerText = `Je was hier de laatste keer op: ${localStorage.laatstOpDeSite}`;
+                localStorage.laatstOpDeSite = new Date();
+            }
+        });
+
+        document.getElementById('btnVerwijderMij').addEventListener('click', function () {
+            localStorage.removeItem('laatstOpDeSite');
+            location.reload();
         });
     </script>
 </body>
