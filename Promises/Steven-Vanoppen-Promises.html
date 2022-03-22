@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+</head>
+<body>
+    <p>Selecteer een knop om de video in te lezen</p>
+    <p id="error"></p>
+    <div id="buttonsDiv">
+        <button>Video 1</button>
+        <button>Video 2</button>
+    </div>
+    <h2 id="titel"></h2>
+    <iframe id="youtube" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div id="lyrics"></div>
+
+    <script type="text/javascript">
+        "use strict";
+
+        let pError = document.getElementById('error')
+        let youtube = document.getElementById('youtube');
+        let lyrics = document.getElementById('lyrics');
+        let h2Titel = document.getElementById('titel');
+        let buttonsDiv = document.getElementById('buttonsDiv');
+        let jsonData;
+        let selectedButton;
+    </script>
+</body>
+</html>
