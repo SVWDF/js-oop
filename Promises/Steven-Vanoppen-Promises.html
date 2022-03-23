@@ -29,6 +29,39 @@
 
         fetch('promises.json')
             .then(response => response.json())
+            .then(data => {
+                jsonData = data;
+            })
+
+            .catch(error => {
+                pError.innerHTML = `Sorry, de video's kunnen niet ingelezen worden. Probeer later opnieuw. <br /> ${error}`;
+            });
+
+            function selectedVideo() {
+                let dataArray = jsonData.list[selectedButton];
+                h2Titel.innerText = dataArray.titel;
+                youtube.src = `https://www.youtube.com/embed/${dataArray.youtubeUrl}`;
+                lyrics.innerHTML = dataArray.lyrics;
+            }
+
+            function setVideoAndLyrics() {
+                if (jsonData) {
+                    if (selectedButton == 0) {
+                        selectedVideo();
+                    }
+                    else {
+                        selectedVideo();
+                    }
+                }
+                else if (!jsonData) {
+                    pError.innerText = "Sorry, de video's zijn nog niet ingelezen worden. Probeer later opnieuw";
+                }
+            }
+
+            document.getElementById('buttonsDiv').addEventListener('click', function (e) {
+                selectedButton = Array.from(e.target.parentNode.children).indexOf(e.target);
+                setVideoAndLyrics();
+            });
     </script>
 </body>
 </html>
