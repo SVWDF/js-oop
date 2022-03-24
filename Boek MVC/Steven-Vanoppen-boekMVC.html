@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boek MVC</title>
+</head>
+<body>
+    <input type="text" name="" id="isbn">
+    <input type="text" name="" id="titel">
+    <input type="text" name="" id="jaar">
+    <input type="text" name="" id="publisher">
+    <input type="text" name="" id="status">
+    <button id="btnOntleend">ontleend</button>
+    <button id="btnTerugBinnen">terug binnen</button>
+
+    <script type="text/javascript">
+        "use strict";
+
+        (function () {
+
+            let model = {
+                boek: {},
+                init() {
+                    model.boek = {
+                        isbn: "01234567", 
+                        titel: "Javascript, The right way", 
+                        jaar: 2012, 
+                        publisher: "jstherightway.com", 
+                        status: "aanwezig"
+                    };
+                }, 
+                setStatus(status) {
+                    if (model.boek.status != status) {
+                        model.boek.status = status;
+                    }
+                },
+                getDate() {
+                    return model.boek;
+                }
+            };
+
+            let view = {
+                init() {
+                    view.isbn = document.getElementById('isbn');
+                    view.titel = document.getElementById('titel');
+                    view.jaar = document.getElementById('jaar');
+                    view.publisher = document.getElementById('publisher');
+                    view.status = document.getElementById('status');
+                },
+                setView(waardes) {
+                   view.isbn.value = waardes.isbn; 
+                   view.titel.value = waardes.titel;
+                   view.jaar.value = waardes.jaar;
+                   view.publisher.value = waardes.publisher;
+                   view.status.value = waardes.status;
+                }
+            };
+
+            let controller = {
+                init() {
+                    model.init();
+                    view.init();
+                    document.getElementById('btnOntleend').addEventListener('click', () => {
+                       model.setStatus('afwezig');
+                       view.setView(model.boek); 
+                    });
+
+                    document.getElementById('btnTerugBinnen').addEventListener('click', () => {
+                        model.setStatus('aanwezig');
+                        view.setView(model.boek);
+                    });
+                }
+            };
+
+            controller.init();
+
+        }) ();
+    </script>
+</body>
+</html>
